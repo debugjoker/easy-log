@@ -96,7 +96,8 @@ public class EasyLogParser implements BeanFactoryAware {
                 if (customFunctionService.executeBefore(funcName)) {
                     Object value = cachedExpressionEvaluator.parseExpression(param, elementKey, evaluationContext);
                     String apply = customFunctionService.apply(funcName, value == null ? null : value.toString());
-                    map.put(getFunctionMapKey(funcName, param), apply);
+                    String paramValue = value == null ? "" : value.toString();
+                    map.put(getFunctionMapKey(funcName, paramValue), apply);
                 }
             }
         }
